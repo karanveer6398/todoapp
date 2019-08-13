@@ -1,11 +1,11 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "HelloCordova",
-  "short_name": "HelloCordova",
-  "version": "io.cordova.hellocordova",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
-  "author": "Apache Cordova Team",
+  "name": "Minimum Template",
+  "short_name": "Minimum Template",
+  "version": "com.example.helloworld",
+  "description": "Made with Monaca (http://monaca.mobi)",
   "icons": [],
+  "orientation": "any",
   "start_url": "index.html"
 }
