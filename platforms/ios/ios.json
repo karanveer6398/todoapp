@@ -4,20 +4,16 @@
     "uninstalled": []
   },
   "config_munge": {
-    "files": {
-      "*-Info.plist": {
-        "parents": {
-          "CFBundleLocalizations": [
-            {
-              "xml": "<array><string>en</string></array>",
-              "count": 1,
-              "id": "config.xml"
-            }
-          ]
-        }
-      }
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
-  "installed_plugins": {},
-  "dependent_plugins": {}
+  "dependent_plugins": {},
+  "modules": [],
+  "plugin_metadata": {
+    "cordova-plugin-whitelist": "1.3.4"
+  }
 }
