@@ -41,13 +41,27 @@ todoStorage.remove =function(label){
     this.save(); //Saving new Array
     return true;
 };
-
-
+//Changing Status
+todoStorage.toggleStatus =function(label){
+    if(!this.hasItem(label)){ //Checking it this exist
+        return false;
+    }
+    this.collection.forEach(function(item, i){
+       if(item.label === label){
+           item.status = item.status === 'completed' ? 'uncompleted' : 'completed'; //Changing status if it is completed change it to uncompleted and vice versa
+       } 
+    });
+    this.save();//Saving Tasks
+    return true;
+};
 todoStorage.filter = function(status){
     if(status === 'all'){
         return this.collection;
+    
     }
     return this.collection.filter(function(item){
         return item.status === status;
     });
 };
+
+

@@ -6,7 +6,7 @@ var todo = {
 document.addEventListener('init', function(event){
     var view = event.target.id;
     
-    if(view === 'menu' || view === "list"){
+    if( view === "list"){
         todo[view + 'Init'](event.target);
     }
 },false);
@@ -83,7 +83,7 @@ todo.toggleStatus = function(label){
         ons.notification.alert('Failed to change the status of the selected item!');
     }
 }
-//Removing pop up message
+//Removing pop up
 todo.removeItemPrompt = function(label){
     //Prompting message
     ons.notification.confirm('Are you sure to remove '+label+ ' from the todo list?',{
