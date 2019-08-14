@@ -75,11 +75,22 @@ todo.refresh = function(){
     }.bind(todo));
 };
 
-todo.toggleStatus = function(label){
-    if(todoStorage.toggleStatus(label)){
-        this.refresh();
-    }
-    else{
-        ons.notification.alert('Failed to change the status of the selected item!');
-    }
-}
+
+//Removing pop up
+todo.removeItemPrompt = function(label){
+    //Prompting message
+    ons.notification.confirm('Are you sure to remove '+label+ ' from the todo list?',{
+        title: 'Remove item?',
+        
+        callback: function(answer){
+            if (answer === 1){ //If user press OK
+                if(todoStorage.remove(label)){// Then remove the task
+                    this.refresh(); //and refresh the list
+                }
+                else{
+                    ons.notification.alert('Failed to remove item from todo list!'); //if some error occurs
+                }
+            }
+        }.bind(this)
+    });
+};

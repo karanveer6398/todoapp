@@ -27,6 +27,22 @@ todoStorage.add= function(label){
     this.save(); //Saving new array
     return true;
 };
+//Delete the task
+todoStorage.remove =function(label){
+    if(!this.hasItem(label)){ //Checking if the task is there.
+        return false;
+    }
+    //If it is there then delete it.
+    this.collection.forEach(function(item, i){ 
+       if(item.label === label){
+           this.collection.splice(i,1); //Deleting the task on  'i' index.
+       } 
+    }.bind(this));
+    this.save(); //Saving new Array
+    return true;
+};
+
+
 todoStorage.filter = function(status){
     if(status === 'all'){
         return this.collection;
