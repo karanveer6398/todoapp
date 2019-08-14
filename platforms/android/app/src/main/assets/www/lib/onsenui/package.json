@@ -3,8 +3,22 @@
   "version": "2.3.2",
   "description": "HTML5 Mobile Framework & UI Components",
   "private": false,
-  
-  
+  "author": "@kruyvanna",
+  "contributors": [
+    {
+      "name": "Mitsunori KUBOTA",
+      "email": "anatoo.jp@gmail.com",
+      "url": "http://anatoo.jp"
+    },
+    {
+      "name": "Andreas Argelius",
+      "email": "andreas@asial.co.jp"
+    },
+    {
+      "name": "Ataru Otoh",
+      "email": "ataru@asial.co.jp"
+    }
+  ],
   "scripts": {
     "test": "gulp test --disable-warnings"
   },

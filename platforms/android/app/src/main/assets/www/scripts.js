@@ -40,14 +40,46 @@ todo.addItemPrompt =function(){
         }.bind(this)
     });
 }
+todo.refresh = function(){
+    var items = todoStorage.filter(this.filterFlag);
+    
+    this.list.innerHTML = items.map(function(item){ //Populating items into list
+        return document.querySelector('#todo-list-item').innerHTML
+            .replace('{{label}}', item.label)
+            .replace('{{checked}}', item.status === 'completed' ? 'checked' : '');
+    }).join('');
+    
+    var children =this.list.children;
+    
+    this.events.forEach(function(event,i){
+       event.element.removeEventListener('click', event.function); 
+    });
+    
+    this.events =[];
+    
+    var event = {};
+    items.forEach(function(item,i){
+        event ={
+            element: children[i].querySelector('ons-input'),
+            function: this.toggleStatus.bind(this, item.label)
+        };
+        this.events.push(event);
+        event.element.addEventListener('click', event.function);
+       
+        event = {
+           element: children[i].querySelector('ons-icon'),
+           function: this.removeItemPrompt.bind(this,item.label)
+        };
+       this.events.push(event);
+       event.element.addEventListener('click', event.function);
+    }.bind(todo));
+};
 
-
-
-
-
-
-
-
-
-
-
+todo.toggleStatus = function(label){
+    if(todoStorage.toggleStatus(label)){
+        this.refresh();
+    }
+    else{
+        ons.notification.alert('Failed to change the status of the selected item!');
+    }
+}
